@@ -1,0 +1,50 @@
+<mat-card>
+    <mat-card-content>
+        <div class="fx-row-space-between">
+            <div class="fx-row-start-gap-20">
+                <button mat-mini-fab color="primary">
+                    <mat-icon>ballot</mat-icon>
+                </button>
+                <strong class="text">Products</strong>
+            </div>
+            <mat-icon color="primary">forward</mat-icon>
+        </div>
+    </mat-card-content>
+    <mat-card-footer>
+        <i class="footer-text">Total: {{productsAmount$ | async}}</i>
+    </mat-card-footer>
+</mat-card>
+
+<mat-card>
+    <mat-card-content>
+        <div class="fx-row-space-between">
+            <div class="fx-row-start-gap-20">
+                <button mat-mini-fab color="primary">
+                    <mat-icon>stairs</mat-icon>
+                </button>
+                <strong class="text">Floors</strong>
+            </div>
+            <mat-icon color="primary">forward</mat-icon>
+        </div>
+    </mat-card-content>
+    <mat-card-footer>
+        <i class="footer-text">Total: {{floorsAmount$ | async}}</i>
+    </mat-card-footer>
+</mat-card>
+
+<mat-card>
+    <mat-card-content>
+        <div class="fx-row-space-between">
+            <div class="fx-row-start-gap-20">
+                <button mat-mini-fab color="primary">
+                    <mat-icon>input</mat-icon>
+                </button>
+                <strong class="text">Sections</strong>
+            </div>
+            <mat-icon color="primary">forward</mat-icon>
+        </div>
+    </mat-card-content>
+    <mat-card-footer>
+        <i class="footer-text">Total: {{sectionsAmount$ | async}}</i>
+    </mat-card-footer>
+</mat-card>
