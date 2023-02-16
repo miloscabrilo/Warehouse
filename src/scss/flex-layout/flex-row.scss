@@ -1,0 +1,29 @@
+
+.fx-row-space-between {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fx-row-space-around {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fx-row-start-gap-20 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.fx-row-end {
+    align-self: flex-end;
+}

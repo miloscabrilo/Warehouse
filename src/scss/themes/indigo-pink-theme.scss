@@ -16,5 +16,8 @@ $my-theme: mat.define-light-theme((
  density: 0,
 ));
 
+$primary: mat.get-color-from-palette($my-primary);
+$accent: mat.get-color-from-palette($my-accent);
+
 // Emit theme-dependent styles for common features used across multiple components.
 @include mat.all-component-themes($my-theme);
