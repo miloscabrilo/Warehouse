@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
   
   ngOnInit(): void {
+    // Subscription on router event to read `title` parameter.
     this.subscriptions.push(
       this.router.events.subscribe(event => {
         if (event instanceof ActivationStart) {

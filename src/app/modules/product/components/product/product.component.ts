@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Open new page for updating the existing product.
   public updateProduct() {
     this.router.navigate(['/products/edit', this.product.code]);
   }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Product } from '@app/models/product-model';
-import { HttpMockService } from '@services/http-mock.service';
+import { ProductService } from '@services/product.service';
 import { debounceTime, Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -15,19 +15,21 @@ export class ProductFilterComponent implements OnInit, OnDestroy {
 
   public form!: FormGroup;
 
-  public floors$: Observable<number[]> = this.httpMockService.getAllFloors();
-  public sections$: Observable<number[]> = this.httpMockService.getAllSections();
+  // floors$ and section$ are Observables whose values are used to fill corresponding mat-select element.
+  public floors$: Observable<number[]> = this.productService.getAllFloors();
+  public sections$: Observable<number[]> = this.productService.getAllSections();
 
   private subscriptions: Subscription[] = new Array<Subscription>();
 
   constructor(
-    private readonly httpMockService: HttpMockService
+    private readonly productService: ProductService
   ) { }
 
   ngOnInit(): void {
     this.createForm();
     this.filtered.emit(this.form.value)
 
+    // Emit every change in filter form as an event.
     this.subscriptions.push(
       this.form.valueChanges.pipe(
         debounceTime(300)

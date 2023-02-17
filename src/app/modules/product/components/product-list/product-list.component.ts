@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductListComponent implements OnInit {
 
+  // Initially filter is empty - getting all products.
   public products$: Observable<Product[]> = this.productService.getFilteredProducts({});
 
   constructor(
@@ -19,6 +20,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // onFilter event: Search for products based on specific criteria - filterValue.
   onFiltered(filterValue: Partial<Product>) {
     this.products$ = this.productService.getFilteredProducts(filterValue);
   }

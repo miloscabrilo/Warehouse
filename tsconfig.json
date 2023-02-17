@@ -31,6 +31,7 @@
       ],
       "@services/*": [
         "src/app/services/*",
+        "src/app/modules/product/services/*"
       ],
       "@modules/*": [
         "src/app/modules/*",

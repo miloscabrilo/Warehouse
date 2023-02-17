@@ -2,14 +2,20 @@ import { Injectable } from '@angular/core';
 import { Product } from '@app/models/product-model';
 import { Observable, of } from 'rxjs';
 
+/**
+ * This class emulates BE calls.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class HttpMockService {
 
+  // Static list of floors.
   private floorsList: number[] = [1, 2, 3];
+  // Static list of sections.
   private sectionsList: number[] = [1, 2, 3];
 
+  // Static list of products.
   private productsList: Product[] = [
     {
       code: "MYTZ 123456",
@@ -63,6 +69,11 @@ export class HttpMockService {
     return of(this.sectionsList.length);
   }
 
+  /**
+   * This method determines which products match user's criteria.
+   * @param filteredProduct is a partial Product object that is generated based on specific criteria.
+   * @returns The array of products obtained on a particular filter. 
+   */
   public findProducts(filteredProduct: Partial<Product>): Observable<Product[]> {
 
     let filteredProductList: Product[] = this.productsList;
@@ -113,12 +124,17 @@ export class HttpMockService {
     return of(false);
   }
 
+  /**
+   * This method update specified product in the products list.
+   * @param updatedProduct Product that should be updated
+   * @returns true if action is successfully performed, otherwise false.
+   */
   public updateProduct(updatedProduct: Product): Observable<boolean> {
 
     // Find the index of the object with the matching code
     const index = this.productsList.findIndex(it => it.code === updatedProduct.code);
 
-    // If the index is found, update the object's properties
+    // If the index is found, update the object's properties - return true.
     if (index !== -1) {
       this.productsList[index] = {
         ...this.productsList[index],
@@ -126,9 +142,11 @@ export class HttpMockService {
       }
       return of(true);
     }
+    // If the index is not found, the products list is not updated - return false.
     return of(false);
   }
 
+  // Get the product by product code if it exist. Otherwise, return null.
   public getProductByCode(productCode: string): Observable<Product | null> {
     const product = this.productsList.find(prod => prod.code === productCode);
     if (product != null) {
@@ -137,6 +155,11 @@ export class HttpMockService {
     return of(null);
   }
 
+  /**
+   * This method checks whether product code already exists in the DB.
+   * @param enteredCode Product code for which the DB is being checked.
+   * @returns true if product code exists, otherwise false.
+   */
   public checkIfProductCodeExists(enteredCode: string): Observable<boolean> {
     const codes = this.productsList.map(product => product.code);
     return of(codes.some(code => code === enteredCode))

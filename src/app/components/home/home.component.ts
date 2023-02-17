@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpMockService } from '@services/http-mock.service';
+import { HomeService } from '@services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +8,13 @@ import { HttpMockService } from '@services/http-mock.service';
 })
 export class HomeComponent implements OnInit {
 
-  public productsAmount$ = this.httpMockService.getProductsSize();
-  public floorsAmount$ = this.httpMockService.getFloorsSize();
-  public sectionsAmount$ = this.httpMockService.getSectionsSize();
+  public productsAmount$ = this.homeService.getProductsSize();
+  public floorsAmount$ = this.homeService.getFloorsSize();
+  public sectionsAmount$ = this.homeService.getSectionsSize();
 
 
   constructor(
-    private readonly httpMockService: HttpMockService
+    private readonly homeService: HomeService
   ) {}
 
   ngOnInit(): void {

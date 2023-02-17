@@ -19,9 +19,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = new Array<Subscription>();
 
-  // if product has a value - UPDATE mode, otherwise CREATE mode
+  // If product has a value - UPDATE mode, otherwise CREATE mode.
   public product!: Product | null;
 
+  // floors$ and section$ are Observables whose values are used to fill corresponding mat-select element.
   public floors$ = this.productService.getAllFloors();
   public sections$ = this.productService.getAllSections();
 
@@ -34,6 +35,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    // Get product code from the route. If it exists, get the product for entered code - UPDATE mode.
+    // If product code does not exist, set null to product property - CREATE mode
     this.subscriptions.push(
       this.route.paramMap.pipe(
         switchMap((params: ParamMap) => {
@@ -76,6 +79,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     this.form.markAllAsTouched();
   }
 
+  // onSubmit method - updating an existing or creating a new product
   public onSubmit() {
     if (this.form.valid) {
       // UPDATE mode
@@ -100,6 +104,11 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
 }
 
+/**
+ * Asynchronous Validator. This class has the static `validate` method that is used to get information 
+ * if the entered product code already exists in the DB. 
+ * If product code already exists, generate ValidationErrors object.
+ */
 export class CodeExistsAsyncValidator {
 
   static validate(productService: ProductService): AsyncValidatorFn {
