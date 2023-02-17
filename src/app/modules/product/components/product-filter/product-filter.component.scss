@@ -3,7 +3,7 @@
     // body margin = 8px, mat-card border = 2px, mat-card padding = 16px, column-gap = 20px
     // 92px = 2 * body margin + 2 * mat-card border + 2 * mat-card padding + 2 * column-gap
     // Width for single mat-form-field should be 100vw - at least 92px divided by 3 (3 is number of mat-form-field elements)
-    width: calc((100vw - 92px)/3);
+    width: calc((100vw - 110px)/3);
 
     @media screen and (max-width: 500px) {
         width: calc(100vw - 50px);
