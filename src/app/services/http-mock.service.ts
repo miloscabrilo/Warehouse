@@ -62,4 +62,84 @@ export class HttpMockService {
   public getSectionsSize(): Observable<number> {
     return of(this.sectionsList.length);
   }
+
+  public findProducts(filteredProduct: Partial<Product>): Observable<Product[]> {
+
+    let filteredProductList: Product[] = this.productsList;
+
+    // Filter by Code
+    if (filteredProduct.code != null) {
+      const code = filteredProduct.code;
+      filteredProductList = filteredProductList.filter(prod => prod.code.includes(code.trim()))
+    }
+
+    // Filter by Floor
+    if (filteredProduct.floor != null) {
+      const floor = filteredProduct.floor;
+      filteredProductList = filteredProductList.filter(prod => prod.floor === floor)
+    }
+
+    // Filter by Section
+    if (filteredProduct.section != null) {
+      const section = filteredProduct.section;
+      filteredProductList = filteredProductList.filter(prod => prod.section === section)
+    }
+
+    return of(filteredProductList);
+  }
+
+  public getAllProducts(): Observable<Product[]> {
+    return of(this.productsList);
+  }
+
+  public getAllFloors(): Observable<number[]> {
+    return of(this.floorsList);
+  }
+
+  public getAllSections(): Observable<number[]> {
+    return of(this.sectionsList);
+  }
+
+  public getAllProductCodes(): Observable<string[]> {
+    return of(this.productsList.map(product => product.code));
+  }
+
+  public addProduct(product: Product): Observable<boolean> {
+    const oldSize = this.productsList.length;
+    const newSize = this.productsList.push(product);
+    if (newSize > oldSize) {
+      return of(true);
+    }
+    return of(false);
+  }
+
+  public updateProduct(updatedProduct: Product): Observable<boolean> {
+
+    // Find the index of the object with the matching code
+    const index = this.productsList.findIndex(it => it.code === updatedProduct.code);
+
+    // If the index is found, update the object's properties
+    if (index !== -1) {
+      this.productsList[index] = {
+        ...this.productsList[index],
+        ...updatedProduct
+      }
+      return of(true);
+    }
+    return of(false);
+  }
+
+  public getProductByCode(productCode: string): Observable<Product | null> {
+    const product = this.productsList.find(prod => prod.code === productCode);
+    if (product != null) {
+      return of(product);
+    }
+    return of(null);
+  }
+
+  public checkIfProductCodeExists(enteredCode: string): Observable<boolean> {
+    const codes = this.productsList.map(product => product.code);
+    return of(codes.some(code => code === enteredCode))
+  }
+
 }

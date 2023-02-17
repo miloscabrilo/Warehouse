@@ -5,8 +5,3 @@ export interface Product {
     floor: number;
     section: number;
 }
-
-export enum ProductFormMode {
-    CREATE,
-    UPDATE
-}

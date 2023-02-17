@@ -18,8 +18,17 @@
     color: $primary;
 }
 
+.float-right {
+    float: right;
+    margin-bottom: 8px;
+}
+
 .mat-card-product {
     margin: 5px 0;
     border: 0.4px solid $accent !important;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
+}
+
+h3 {
+    margin: 0 !important;
 }

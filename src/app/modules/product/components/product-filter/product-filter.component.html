@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-content>
+
+        <form [formGroup]="form" autocomplete="none" novalidate>
+            <div class="fx-row-space-between">
+                <h3>Filter</h3>
+                <button class="float-right" mat-mini-fab color="primary" type="reset">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+            <div class="fx-row-start-gap-20">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Code</mat-label>
+                    <input matInput formControlName="code" placeholder="ABC 12345">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Floor</mat-label>
+                    <mat-select formControlName="floor">
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let floor of (floors$ | async)" [value]="floor">
+                            Floor {{floor}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Section</mat-label>
+                    <mat-select formControlName="section">
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let section of (sections$ | async)" [value]="section">
+                            Section {{section}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

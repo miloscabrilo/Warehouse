@@ -1,0 +1,16 @@
+<mat-card class="mat-card-product">
+    <mat-card-content>
+        <div class="fx-row-space-between">
+            <strong>{{product.code}}</strong>
+            <div>
+                <button mat-mini-fab (click)="updateProduct()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="fx-row-space-between">
+            <div>Quantity: {{product.quantity}}</div>
+            <div>Location: {{product.floor}} / {{product.section}}</div>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,19 @@
+<app-product-filter (filtered)="onFiltered($event)"></app-product-filter>
+
+<mat-card>
+    <mat-card-content>
+        <div class="fx-row-space-between">
+            <div *ngIf="products$ | async as products">
+                <h3>Total: {{products.length}} product{{products.length > 1 ? 's' : ''}}</h3>
+            </div>
+            <button class="float-right" mat-mini-fab color="primary" routerLink="/products/create">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <ng-container *ngIf="products$ | async as products">
+            <ng-container *ngFor="let product of products">
+                <app-product [product]="product"></app-product>
+            </ng-container>
+        </ng-container>
+    </mat-card-content>
+</mat-card>
