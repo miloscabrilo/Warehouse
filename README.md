@@ -2,6 +2,15 @@
 
 This is an Angular app for managing products in a Warehouse system. With this app, users can create new products, view a list of available products, and search for products based on specific criteria.
 
+## Pre-requisites ##
+
+Before you can run this app, you'll need to have the following software installed on your machine:
+
+- Node.js (version 18 or higher)
+- Node Package Manager - npm (version 8 or higher)
+- Angular CLI (version 15 or higher)
+- Git (version 2 or higher)
+
 ## Installation ##
 
 - Clone the repository to your local machine.
