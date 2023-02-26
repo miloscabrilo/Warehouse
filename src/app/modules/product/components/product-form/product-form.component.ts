@@ -76,7 +76,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
           Validators.required
         ])
     });
-    this.form.markAllAsTouched();
   }
 
   // onSubmit method - updating an existing or creating a new product

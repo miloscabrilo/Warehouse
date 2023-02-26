@@ -3,7 +3,7 @@
         <div class="fx-row-space-between">
             <strong>{{product.code}}</strong>
             <div>
-                <button mat-mini-fab (click)="updateProduct()">
+                <button mat-mini-fab [routerLink]="['/products/edit', product.code]">
                     <mat-icon>edit</mat-icon>
                 </button>
             </div>

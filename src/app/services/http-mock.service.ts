@@ -81,7 +81,7 @@ export class HttpMockService {
     // Filter by Code
     if (filteredProduct.code != null) {
       const code = filteredProduct.code;
-      filteredProductList = filteredProductList.filter(prod => prod.code.includes(code.trim()))
+      filteredProductList = filteredProductList.filter(prod => prod.code.includes(code.toUpperCase().trim()))
     }
 
     // Filter by Floor
