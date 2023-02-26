@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -30,7 +29,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private readonly productService: ProductService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -91,10 +89,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       }
       this.router.navigate(['/products']);
     }
-  }
-
-  public onCancel() {
-    this.location.back();
   }
 
   ngOnDestroy(): void {

@@ -5,7 +5,7 @@
         <ng-container *ngIf="products$ | async as products">
             <div class="fx-row-space-between">
                 <h3>Total: {{products.length}} product{{products.length > 1 ? 's' : ''}}</h3>
-                <button class="float-right" mat-mini-fab color="primary" routerLink="/products/create">
+                <button class="float-right" mat-mini-fab color="primary" routerLink="create">
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
