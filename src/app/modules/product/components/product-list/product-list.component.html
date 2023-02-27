@@ -1,4 +1,5 @@
-<app-product-filter (filtered)="onFiltered($event)"></app-product-filter>
+<app-filter [fields]="productFilter" (valueChange)="onFiltered($event)">
+</app-filter>
 
 <mat-card>
     <mat-card-content>

@@ -6,6 +6,7 @@ import { MaterialSharedModule } from '@modules/material-shared/material-shared.m
 import { ProductListComponent } from '@components/product-list/product-list.component';
 import { ProductFormComponent } from '@components/product-form/product-form.component';
 import { ProductFilterComponent } from '@components/product-filter/product-filter.component';
+import { ReusableComponentsModule } from '@modules/reusable-components/reusable-components.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ProductFilterComponent } from '@components/product-filter/product-filte
     CommonModule,
     ProductRoutingModule,
     MaterialSharedModule,
-  ]
+    ReusableComponentsModule
+  ],
 })
 export class ProductModule { }
