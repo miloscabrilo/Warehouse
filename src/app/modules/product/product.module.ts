@@ -5,7 +5,6 @@ import { ProductComponent } from '@components/product/product.component';
 import { MaterialSharedModule } from '@modules/material-shared/material-shared.module';
 import { ProductListComponent } from '@components/product-list/product-list.component';
 import { ProductFormComponent } from '@components/product-form/product-form.component';
-import { ProductFilterComponent } from '@components/product-filter/product-filter.component';
 import { ReusableComponentsModule } from '@modules/reusable-components/reusable-components.module';
 
 
@@ -14,7 +13,6 @@ import { ReusableComponentsModule } from '@modules/reusable-components/reusable-
     ProductComponent,
     ProductListComponent,
     ProductFormComponent,
-    ProductFilterComponent
   ],
   imports: [
     CommonModule,
