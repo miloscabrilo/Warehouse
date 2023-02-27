@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FilterField } from '@app/models/product-model';
 
 @Component({
@@ -9,20 +9,21 @@ import { FilterField } from '@app/models/product-model';
 })
 export class FilterComponent implements OnInit {
 
+  form!: FormGroup;
+
   @Input() fields!: FilterField[];
   @Output() valueChange = new EventEmitter<FormGroup>();
 
-  public filterForm = new FormGroup({});
-
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({});
     this.fields.forEach(field => {
-      this.filterForm.addControl(field.name, new FormControl());
+      this.form.addControl(field.name, new FormControl());
     });
 
-    this.filterForm.valueChanges.subscribe(() => {
-      this.valueChange.emit(this.filterForm);
+    this.form.valueChanges.subscribe(() => {
+      this.valueChange.emit(this.form);
     });
   }
 }
