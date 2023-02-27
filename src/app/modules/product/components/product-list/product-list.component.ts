@@ -11,7 +11,7 @@ import { combineLatestWith, Observable, Subscription } from 'rxjs';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
 
-  public productFilter: FilterField[] = new Array<FilterField>();
+  public productFilterFields: FilterField[] = new Array<FilterField>();
 
   private subscriptions: Subscription[] = new Array<Subscription>();
 
@@ -27,9 +27,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.productService.getAllFloors().pipe(
         combineLatestWith(this.productService.getAllSections()),
       ).subscribe(res => {
-        this.productFilter.push({ label: 'Code', name: 'code', type: 'text' });
-        this.productFilter.push({ label: 'Floor', name: 'floor', type: 'select', options: res[0] });
-        this.productFilter.push({ label: 'Section', name: 'section', type: 'select', options: res[1] });
+        this.productFilterFields.push({ label: 'Code', name: 'code', type: 'text' });
+        this.productFilterFields.push({ label: 'Floor', name: 'floor', type: 'select', options: res[0] });
+        this.productFilterFields.push({ label: 'Section', name: 'section', type: 'select', options: res[1] });
       })
     )
   }
