@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-content>
+        <div class="fx-row-space-between">
+            <h3>Total: {{items?.length}}</h3>
+            <button mat-mini-fab color="primary" [routerLink]="createLink">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <ng-container *ngFor="let item of items">
+            <app-item [item]="item" [editLink]="editLink"></app-item>
+        </ng-container>
+    </mat-card-content>
+</mat-card>

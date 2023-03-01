@@ -1,0 +1,19 @@
+<mat-card class="mat-card-item">
+    <mat-card-content>
+        <ng-container *ngFor="let i of item | entries; let first = first">
+            <ng-container *ngIf="first">
+                <div class="fx-row-space-between">
+                    <strong>{{ i[1] }}</strong>
+                    <button mat-mini-fab [routerLink]="[editLink, i[1]]">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!first">
+                <div>
+                    {{ i[0] }}: {{ i[1] }}
+                </div>
+            </ng-container>
+        </ng-container>
+    </mat-card-content>
+</mat-card>
